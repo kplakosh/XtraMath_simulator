@@ -1,0 +1,122 @@
+html {
+    height: 100vh;
+}
+
+body {
+    background-color: #819999;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1, 
+p,
+ul {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li:last-child,
+li:first-child {
+    background-color: #ffffff;
+}
+
+li {
+    border: 1px solid gray;
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    font-size: 1rem;
+}
+
+.quiz-block {
+    display: flex;
+    flex-flow: column;
+    background-color: #e0e0e0;
+    width: 57rem;
+    height: 44rem;
+    margin: 60px auto 0 auto;
+    border-radius: 8px;
+}
+
+/* Main paige */
+.test-name {
+    display: inline-block;
+    width: 90%;
+    margin: 30px 5% 0 5%;
+    background-color: #ffffff;
+}
+
+/* Top of the main section */
+.top {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.top,
+.middle {
+    background-color: #ffffff;
+}
+
+/* Middle of the bottom section */
+.middle {
+    height: calc(44rem - 50px);
+}
+
+.grid {
+    display: flex;
+    flex-flow: column;
+    width: 25.5rem;
+    margin: 100px 30px 40px 450px;
+    border: 2px solid #62c4bb;
+    background-color: #ffffff;
+}
+
+.plain_grid {
+    display: flex;
+    flex-flow: column;
+}
+
+.row {
+    display: inline-flex;
+    flex-flow: row;
+    text-align: center;
+    margin: auto;
+}
+
+.colorful {
+    background-color: #a8a8a8;
+}
+
+/* Bottom of the main section */
+.bottom {
+    height: 50px;
+    border-top: 1px solid lightgray; 
+    padding-top: 10px;
+}
+
+.btn-box {
+    background-color: #ffffff;
+    border: 1px solid lightgray;
+    border-radius: 8px;
+    width: 90px;
+    padding: 2px;
+    text-align: center;
+    margin: auto;
+}
+
+.btn {
+    background-color: #79ab3c;
+    height: 30px;
+    width: 88px;
+    border-radius: 8px;
+    padding: 0;
+    margin: auto;
+    font-size: 14px;
+    color: #ffffff;
+}
