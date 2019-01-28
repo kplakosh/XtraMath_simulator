@@ -1,0 +1,27 @@
+{
+  "name": "xtramath_simulator-master",
+  "version": "1.0.0",
+  "description": "xtramath practice simulator",
+  "main": "controller.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kplakosh/XtraMath_simulator.git"
+  },
+  "author": "Kateryna Plakosh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kplakosh/XtraMath_simulator/issues"
+  },
+  "homepage": "https://github.com/kplakosh/XtraMath_simulator#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1",
+    "webpack-dev-server": "^3.1.14"
+  }
+}
