@@ -54,8 +54,8 @@ li {
 }
 
 .score {
-    display: inline-flex;
-    /* display: none; */
+    /* display: inline-flex; */
+    display: none;
     flex-flow: row;
     padding: 20px 27px 20px 50px;
     margin-left: calc(50rem - 200px);
@@ -91,11 +91,11 @@ li {
 
 .grid {
     /* display: inline-flex; */
-    display: none;
+    /* display: none; */
     flex-flow: column;
     width: 25.5rem;
     margin: 40px 0px 10px 350px;
-    border: 2px solid #62c4bb;
+    /* border: 2px solid #62c4bb; */
     background-color: #ffffff;
 }
 
@@ -117,8 +117,8 @@ li {
 
 /* Problem solving */
 .problem {
-    display: flex;
-    /* display: none; */
+    /* display: flex; */
+    display: none;
     flex-flow: row;
     width: 150px;
     font-size: 65px;

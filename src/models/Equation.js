@@ -1,5 +1,6 @@
 export default class Equation {
-    constructor(name) {
-        this.name = name
+    constructor(name, status) {
+        this.name = name,
+        this.status = status
     }
 }

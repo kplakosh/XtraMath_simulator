@@ -1,3 +1,4 @@
-import quizController from "./mainController";
+import startApplication from "./controllers/mainController";
 
-quizController();
+// Stat application
+startApplication();
