@@ -5,9 +5,9 @@ export const clearSuccessChart = () => {
     elements.middle.innerHTML = '';
 };
 
-// Create one equation
+// Create one equation make sure status name and name of class in css file same
 const createEquation = equation => `
-    <li>${equation.name}</li>
+    <li class="${equation.status}">${equation.name}</li> 
 `;
 
 // Create line of equations
@@ -24,7 +24,7 @@ const createEquationLine = (arr, lineNum) => {
 
 // Create line of grid
 const createLine = (equationArray, lineNum) => `
-    <ul class="row colorful">
+    <ul class="row">
         <li></li>
         ${createEquationLine(equationArray, lineNum)}
         <li></li>

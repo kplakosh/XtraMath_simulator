@@ -2,21 +2,25 @@ import Equation from "../models/Equation"
 import * as homeScreenController from './homeScreenController';
 
 export default function startApplication() {
-    // 1. Initialize array of equations
-    var equationsArray = [];
+    // 1. Initialize array of addition equations
+    var additionEquationsArray = [];
     
-    // 2. Fill out equations array with default values
+    // 2. Fill out equations array with default values for addition
     for(let i = 0; i < 10; i ++) {
         for(let j = 0; j < 10; j ++) {
-            equationsArray.push(new Equation(`${i}+${j}`))
+            // Make sure name of status and name of class in css file is the same
+            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested'))
+            
         };
     };
 
-    homeScreenController.render(equationsArray);
+    homeScreenController.render(additionEquationsArray);
+    console.log(additionEquationsArray);
 
     // 3. Use local storage to keep track of answers 
 
 };
+
 
 export var chardController = {
     // 1. Display the chard of progress

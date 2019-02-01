@@ -4,6 +4,7 @@ import { renderChartGrid } from '../view/gridView';
 export const render = arr => {
     // Render chart grid
     renderChartGrid(arr);
+
 };
 
 

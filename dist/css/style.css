@@ -90,12 +90,10 @@ li {
 }
 
 .grid {
-    /* display: inline-flex; */
-    /* display: none; */
     flex-flow: column;
     width: 25.5rem;
     margin: 40px 0px 10px 350px;
-    /* border: 2px solid #62c4bb; */
+    border: 2px solid #62c4bb;
     background-color: #ffffff;
 }
 
@@ -111,8 +109,20 @@ li {
     margin: auto;
 }
 
-.colorful {
+.notTested {
     background-color: #a8a8a8;
+}
+
+.success {
+    background-color: green;
+}
+
+.fail {
+    background-color: red;
+}
+
+.previousFail {
+    background-color: yellow;
 }
 
 /* Problem solving */
