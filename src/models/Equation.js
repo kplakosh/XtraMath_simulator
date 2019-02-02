@@ -3,4 +3,4 @@ export default class Equation {
         this.name = name,
         this.status = status
     }
-}
+};

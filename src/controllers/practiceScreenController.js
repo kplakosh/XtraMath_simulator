@@ -1,8 +1,9 @@
-import Equation from '../models/Equation'
+import { renderEquation } from '../view/practiceScreenView';
 
-export const startPractice = () => {
+
+export const startPractice = arr => {
     // 1. Print equation
-    
+    renderEquation(chooseEquation(arr).name);
 
     // 2. Start timer
 
@@ -20,4 +21,10 @@ export const startPractice = () => {
         // if(timer < 3 && pressedKey === true)
 
     // 6. Check if the isCorrectAnswer
-}
+};
+
+// Choose random equation from array
+const chooseEquation = arr => {
+    return arr[Math.floor(Math.random() * 100)];
+};
+

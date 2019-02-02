@@ -1,5 +1,5 @@
 export const elements = {
+    top: document.querySelector('.top'),
     middle: document.querySelector('.middle'),
-    // bottom: document.querySelector('.bottom'),
     btn: document.querySelector('.btn-box')
 };

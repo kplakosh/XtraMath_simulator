@@ -54,22 +54,23 @@ li {
 }
 
 .score {
-    /* display: inline-flex; */
-    display: none;
+    display: inline-flex;
     flex-flow: row;
     padding: 20px 27px 20px 50px;
-    margin-left: calc(50rem - 200px);
+    margin-left: calc(50rem - 230px);
+    text-align: end;
 }
 
 #counter {
     font-size: 40px;
     color: #ebb626;
     padding-top: 5px;
+    width: 100px;
 }
 
 #face {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
     font-size: 50px;
 }
 
@@ -129,7 +130,7 @@ li {
 /* Problem solving */
 .problem {
     /* display: flex; */
-    display: none;
+    /* display: none; */
     flex-flow: row;
     width: 150px;
     font-size: 65px;

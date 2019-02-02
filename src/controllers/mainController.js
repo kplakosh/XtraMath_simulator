@@ -2,6 +2,7 @@ import Equation from "../models/Equation"
 import * as homeScreenController from './homeScreenController';
 import { clearHomeScreen } from '../view/homeScreenView';
 import { elements } from "../view/base";
+import { startPractice } from './practiceScreenController';
 
 export default function startApplication() {
     // 1. Initialize array of addition equations
@@ -15,56 +16,23 @@ export default function startApplication() {
         };
     };
 
+    // Print success chart
     homeScreenController.render(additionEquationsArray);
-    // console.log(additionEquationsArray);
-
-    // Clear home screen
-    onClick();
-    
 
     // 3. Use local storage to keep track of answers 
 
     // 4. Listen for button click to start practice
+    handleClick(additionEquationsArray);
 
-
+    // 5. Start practice
+    // startPractice(additionEquationsArray);
 
 };
 
 // Clear home screen from success chart and button itself
-const onClick = () => {
+const handleClick = arr => {
     elements.btn.addEventListener('click', () => {
         clearHomeScreen();
+        startPractice(arr);
     });
-};
-
-export var quizController = {
-    // 1. Show success chart
-
-    // 2. Read the button press to start test
-
-    // 3. Hide success chart 
-
-    // 4. Show test 
-
-    // 5. Start test
-
-    // 6. Reset score
-
-    // 7. Display new random equation
-    // equationController();
-
-    // 8. Set timer for 3 sec
-
-    // 9. If timer less than 3 seconds 
-
-        // 1. Read answer from user
-
-        // 2. Check if the answer is correct
-
-        // 3. Update value of equation object
-
-        // 4. Update the score
-
-    // 12. If timer 3 sec or more
-
 };
