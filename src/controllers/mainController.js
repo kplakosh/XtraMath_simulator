@@ -1,5 +1,7 @@
 import Equation from "../models/Equation"
 import * as homeScreenController from './homeScreenController';
+import { clearHomeScreen } from '../view/homeScreenView';
+import { elements } from "../view/base";
 
 export default function startApplication() {
     // 1. Initialize array of addition equations
@@ -14,8 +16,10 @@ export default function startApplication() {
     };
 
     homeScreenController.render(additionEquationsArray);
-    console.log(additionEquationsArray);
+    // console.log(additionEquationsArray);
 
+    // Clear home screen
+    onClick();
     
 
     // 3. Use local storage to keep track of answers 
@@ -26,9 +30,11 @@ export default function startApplication() {
 
 };
 
-
+// Clear home screen from success chart and button itself
 const onClick = () => {
-    
+    elements.btn.addEventListener('click', () => {
+        clearHomeScreen();
+    });
 };
 
 export var quizController = {

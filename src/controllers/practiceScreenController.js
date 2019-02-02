@@ -2,7 +2,7 @@ import Equation from '../models/Equation'
 
 export const startPractice = () => {
     // 1. Print equation
-
+    
 
     // 2. Start timer
 

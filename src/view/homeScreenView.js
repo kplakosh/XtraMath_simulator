@@ -81,6 +81,7 @@ export const renderChartGrid = array => {
     elements.middle.insertAdjacentHTML("afterbegin", markup);
 };
 
+// Display button in the bottom section
 export const displayBtn = () => {
     if (elements.btn.style === "none") {
         elements.btn.style = 'block';
