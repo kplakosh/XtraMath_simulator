@@ -115,6 +115,7 @@ li {
 
 .success {
     background-color: green;
+    color: gray;
 }
 
 .fail {
@@ -163,7 +164,7 @@ li {
 }
 
 .btn-box {
-    display: none;
+    /* display: none; */
     background-color: #ffffff;
     border: 1px solid lightgray;
     border-radius: 8px;

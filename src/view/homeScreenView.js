@@ -1,8 +1,9 @@
 import { elements } from './base';
 
 // Clear middle part of main section from grid
-export const clearSuccessChart = () => {
+export const clearHomeScreen = () => {
     elements.middle.innerHTML = '';
+    elements.btn.style = "display: none;";
 };
 
 // Create one equation make sure status name and name of class in css file same
@@ -79,3 +80,10 @@ export const renderChartGrid = array => {
     `;
     elements.middle.insertAdjacentHTML("afterbegin", markup);
 };
+
+export const displayBtn = () => {
+    if (elements.btn.style === "none") {
+        elements.btn.style = 'block';
+    };
+};
+

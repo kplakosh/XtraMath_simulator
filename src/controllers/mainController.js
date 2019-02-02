@@ -10,25 +10,25 @@ export default function startApplication() {
         for(let j = 0; j < 10; j ++) {
             // Make sure name of status and name of class in css file is the same
             additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested'))
-            
         };
     };
 
     homeScreenController.render(additionEquationsArray);
     console.log(additionEquationsArray);
 
+    
+
     // 3. Use local storage to keep track of answers 
+
+    // 4. Listen for button click to start practice
+
+
 
 };
 
 
-export var chardController = {
-    // 1. Display the chard of progress
-
-    // 2. Check the value of equation to assign color of background 
-
-    // 3. Display color of background for the sell of equation. Gray - not tested, yellow - need improvement, red - fail, green - master
-
+const onClick = () => {
+    
 };
 
 export var quizController = {
