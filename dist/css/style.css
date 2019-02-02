@@ -47,7 +47,7 @@ li {
 /* Main paige */
 .test-name {
     /* display: inline-block; */
-    display: none;
+    /* display: none; */
     width: 90%;
     margin: 30px 5% 0 5%;
     background-color: #ffffff;

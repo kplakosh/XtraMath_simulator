@@ -4,6 +4,20 @@ import { elements } from './base';
 export const clearHomeScreen = () => {
     elements.middle.innerHTML = '';
     elements.btn.style = "display: none;";
+    elements.testName.style = "display: none;";
+};
+
+// Display name of operation in DOM
+export const operationName = char => {
+    if (char === '+') {
+        elements.operation.innerHTML = 'Addition';
+    } else if (char === '-') {
+        elements.operation.innerHTML = 'Subtraction';
+    } else if (char === 'x') {
+        elements.operation.innerHTML = 'Multiplication';
+    } else if (char === '÷') {
+        elements.operation.innerHTML = 'Division';
+    };
 };
 
 // Create one equation make sure status name and name of class in css file same
@@ -80,6 +94,8 @@ export const renderChartGrid = array => {
     `;
     elements.middle.insertAdjacentHTML("afterbegin", markup);
 };
+
+
 
 // Display button in the bottom section
 export const displayBtn = () => {
