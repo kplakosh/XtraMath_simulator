@@ -1,7 +1,8 @@
 import { elements } from './base';
 
-// Display equation 
+// Display practice screen
 export const renderEquation = equation => {
+    // Display score
     const markupScore = `
         <div class="score">
             <p id="counter">0</p>
@@ -10,6 +11,7 @@ export const renderEquation = equation => {
     `;
     elements.top.insertAdjacentHTML("afterbegin", markupScore);
 
+    // Display equation 
     const markupEquation = `
         <div class="problem">
             <div class="sum">
@@ -18,14 +20,18 @@ export const renderEquation = equation => {
             <div class="num">
                 <p>${equation.charAt(0)}</p>
                 <p>${equation.charAt(2)}</p>
-                <p id="answer">?</p>
             </div>
         </div>
     `;
     elements.middle.insertAdjacentHTML("afterbegin", markupEquation);
 };
-
-// Display score
+    
+export const printAnswer = key => {
+    const markupAnswer = `
+        <p id="answer">${key}</p>
+    `;
+    elements.middle.insertAdjacentHTML("beforeend", markupAnswer);
+}
 
 // Display answer 
 

@@ -46,8 +46,6 @@ li {
 
 /* Main paige */
 .test-name {
-    /* display: inline-block; */
-    /* display: none; */
     width: 90%;
     margin: 30px 5% 0 5%;
     background-color: #ffffff;
@@ -129,12 +127,12 @@ li {
 
 /* Problem solving */
 .problem {
-    /* display: flex; */
+    display: flex;
     /* display: none; */
     flex-flow: row;
     width: 150px;
     font-size: 65px;
-    margin: auto;
+    margin: 60px auto 0 auto;
 }
 
 .sum {
@@ -153,8 +151,19 @@ li {
 }
 
 #answer {
-    display: none;
+    color: black;
+    width: 150px;
+    font-size: 65px;
+    text-align: right;
+    margin-left: 325px;
+}
+
+#hint {
     color: lightgray;
+    width: 150px;
+    font-size: 65px;
+    text-align: right;
+    margin-left: 325px;
 }
 
 /* Bottom of the main section */

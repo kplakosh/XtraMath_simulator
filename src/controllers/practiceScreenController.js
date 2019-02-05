@@ -1,30 +1,35 @@
-import { renderEquation } from '../view/practiceScreenView';
-
+import { renderEquation, printAnswer } from '../view/practiceScreenView';
+import { elements } from '../view/base';
 
 export const startPractice = arr => {
+    var equation = chooseEquation(arr);
+
     // 1. Print equation
-    renderEquation(chooseEquation(arr).name);
+    renderEquation(equation.name);
 
-    // 2. Start timer
+    // 2. Listen for keypress 
+    let enteredValue;
+    window.addEventListener('keypress', event => {
+        enteredValue = event.key;
+        printAnswer(enteredValue);
+    });
+    
 
-    // 3. Await for any key to be pressed
-        // Get the answer with event listener
+    // 3. Print value of pressed key
 
-    // 4. If key wasn't pressed after 3 seconds
-        // if(timer > 3 && pressedKey === false)
+    // 4. Check if entered value is equal to correct answer
 
-            // Call isCorrectAnswer
+        // 1. If answer correct add score
 
-            // 
+        // 2. If answer is not correct clear score and go to home screen
 
-    // 5. If key was pressed before 3 seconds
-        // if(timer < 3 && pressedKey === true)
-
-    // 6. Check if the isCorrectAnswer
 };
 
 // Choose random equation from array
 const chooseEquation = arr => {
     return arr[Math.floor(Math.random() * 100)];
 };
+
+
+
 

@@ -12,20 +12,18 @@ export default function startApplication() {
     for(let i = 0; i < 10; i ++) {
         for(let j = 0; j < 10; j ++) {
             // Make sure name of status and name of class in css file is the same
-            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested'))
+            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', i+j));
         };
     };
 
-    // Print success chart
+    // console.log(additionEquationsArray);
+
     homeScreenController.render(additionEquationsArray);
 
     // 3. Use local storage to keep track of answers 
 
     // 4. Listen for button click to start practice
     handleClick(additionEquationsArray);
-
-    // 5. Start practice
-    // startPractice(additionEquationsArray);
 
 };
 
