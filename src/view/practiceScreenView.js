@@ -1,15 +1,14 @@
 import { elements } from './base';
 
-
 // Add score
-export const displayScore = score => {
+const displayScore = score => {
     const markupScore = `
         <div class="score">
             <p id="counter">${score}</p>
             <p id="face">🙂</p>
         </div>
     `;
-    elements.top.insertAdjacentHTML("afterbegin", markupScore);
+    elements.top.innerHTML = markupScore;
 };
 
 // Clear middle
@@ -17,10 +16,41 @@ export const clearMiddle = () => {
     elements.middle.innerHTML = '';
 };
 
+// Display counted timer
+const displayTimerRed = seconds => {
+    var num = 0;
+    // Print red dots
+    const markup = [];
+    while (num < seconds) {
+        markup.push(`
+            <p class="red"> </p>
+        `);
+        num++;
+    };
+    return markup.join('');
+};
+
+// Display timer
+const displayTimer = seconds => {
+    var num = seconds;
+    // Print grey dots 
+    const markup = [];
+    while (num < 10) {
+        markup.push(`
+            <p> </p>
+        `);
+        num++;
+    };
+    return markup.join('');
+};
+
 // Display practice screen
 export const renderEquation = model => {
+    // Display Score 
+    displayScore(model.score);
+
     // Display equation 
-    const markupEquation = `
+    const markup = `
         <div class="problem">
             <div class="sum">
                 <p>+</p>
@@ -30,19 +60,24 @@ export const renderEquation = model => {
                 <p>${model.name.charAt(2)}</p>
             </div>
         </div>
-    `;
-    elements.middle.insertAdjacentHTML("afterbegin", markupEquation);
-
-    const markupAnswer = `
         <p id="answer">${model.input}</p>
+        <div class="timer">
+            ${displayTimerRed(model.seconds)}
+            ${displayTimer(model.seconds)}
+        </div>
     `;
-    elements.middle.insertAdjacentHTML("beforeend", markupAnswer);
+    elements.middle.innerHTML = markup;
+
+    
+
+    // displayTimerRed(model.redTimer);
+
+    // displayTimer(model.greyTimer);
 };
 
 // Display answer 
 
 // Display mistake
 
-// Display timer
 
 

@@ -1,8 +1,10 @@
 export default class PracticeModel {
-    constructor(name, value, input) {
+    constructor(score, name, value, input, seconds) {
+        this.score = score,
         this.name = name,
         this.value = value,
-        this.input = input
+        this.input = input,
+        this.seconds = seconds
     }
 
     calcLength(value) {

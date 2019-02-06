@@ -166,6 +166,31 @@ li {
     margin-left: 325px;
 }
 
+.timer {
+    width: 250px;
+    align-items: center;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.timer > p {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.timer > .red {
+    display: inline-flex;
+    width: 16px;
+    height: 16px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: red;
+}
+
 /* Bottom of the main section */
 .bottom {
     height: 50px;

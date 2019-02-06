@@ -8,7 +8,7 @@ export const startPractice = arr => {
     var equationObj = chooseEquation(arr);
 
     // Create new model passing equations info
-    const equation = new PracticeModel(equationObj.name, equationObj.value, '');
+    const equation = new PracticeModel(0, equationObj.name, equationObj.value, '', 0);
 
     // 1. Print equation
     practiceView.renderEquation(equation);
@@ -25,25 +25,25 @@ export const startPractice = arr => {
         if (equation.value.toString().length > enteredValue.length) {
             enteredValue.push(event.key);
         }
-        practiceView.renderEquation(new PracticeModel(equationObj.name, equationObj.value, enteredValue.join('')));
+        practiceView.renderEquation(new PracticeModel(5, equationObj.name, equationObj.value, enteredValue.join(''), 2));
 
-        console.log(`correct ${equation.value}`);
+        // console.log(`correct ${equation.value}`);
 
 
     });
 
-    var score = 0;
-    // 4. Check if entered value is equal to correct answer
+    // var score = 0;
+    // // 4. Check if entered value is equal to correct answer
 
-    if (isCorrectAnswer(enteredValue) === true) {
-        // 1. If answer correct add score
-        score += 1;
-        practiceView.displayScore(score);
-    } else {
-        // 2. If answer is not correct clear score and go to home screen
-        score = 0;
-        practiceView.displayScore(score);
-    }
+    // if (isCorrectAnswer(enteredValue) === true) {
+    //     // 1. If answer correct add score
+    //     score += 1;
+    //     practiceView.displayScore(score);
+    // } else {
+    //     // 2. If answer is not correct clear score and go to home screen
+    //     score = 0;
+    //     practiceView.displayScore(score);
+    // }
 
 };
 
@@ -56,6 +56,9 @@ const isCorrectAnswer = arr => {
     return parseInt(arr.join('')) === elements.value ? true : false;
 };
 
+const timer = counter => {
+    counter ++;
+};
 
 
 
