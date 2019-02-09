@@ -6,8 +6,4 @@ export default class PracticeModel {
         this.input = input,
         this.seconds = seconds
     }
-
-    calcLength(value) {
-        this.length = value.toString().length;
-    }
 };

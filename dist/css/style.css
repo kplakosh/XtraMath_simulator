@@ -167,6 +167,7 @@ li {
 }
 
 .timer {
+    position: end;
     width: 250px;
     align-items: center;
     margin: 20px auto;
