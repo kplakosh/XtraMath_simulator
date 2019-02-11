@@ -1,50 +1,48 @@
 import * as practiceView from '../view/practiceScreenView';
-import { elements } from '../view/base';
 import PracticeModel from '../models/PracticeModel';
+// import equation from '../controllers/equationController';
 
-var equationObj;
+var model = {
+    score: 0, // Current score
+    timer: 0, // Time on timer
+    equationObj: '', // Equation object to print
+    equation: '', // Equation to print
+    input: [], // Array of inputs
+    practiceModel: '', // Model to print
+    value: ''
+};
 
 export const startPractice = arr => {
-    let score = 0;
+    // Choose an equation to print
+    model.equationObj = chooseEquation(arr);
+    model.equation = model.equationObj.name;
+    model.value = model.equationObj.value;
 
-    // 1. Choose an equation to print
-    equationObj = chooseEquation(arr);
+    // Create new model passing equations info
+    model.practiceModel = new PracticeModel(model.score, model.equation, model.value, model.input.join(''), model.timer);
 
-    // 2. Create new model passing equations info
-    const equation = new PracticeModel(score, equationObj.name, equationObj.value, '', 0);
-
-    // 3. Print equation
-    practiceView.renderEquation(equation);
-
-    // 4. Listen for keypress 
-    let enteredValue = [];
+    // Handel keypress 
     window.addEventListener('keypress', event => {
-        // Clear screen from data
         practiceView.clearMiddle();
 
-        // Print equation and input
-        if (equation.value.toString().length > enteredValue.length) {
-            enteredValue.push(event.key);
-        };
+        console.log(event.key);
+        console.log(addKey(event.key));
+        addKey(event.key);
+        console.log(model.practiceModel);
+        practiceView.renderEquation(model.practiceModel);
+        if (isFullCorrectInput() === true) {
 
-        // Check if the entered answer is correct
-        if (checkAnswer(enteredValue.join('')) === true) {
-            score += 1;
-            // Generate new equation
-        
-            // Reset input value
-            
-            // Reset timer
+            console.log(model.practiceModel);
+            // 1. Update score
+            let next = nextEquation(chooseEquation(arr));
+            console.log(next);
         } else {
-            score = 0;
+            // 2. Update Equation object value with fail
+            updateStatus('fail');
         };
-
-        practiceView.renderEquation(new PracticeModel(score, equationObj.name, equationObj.value, enteredValue.join(''), 2));
     });
-
-    // 5. Check if entered value is equal to correct answer
-
-    // 6. Update Equation object with answer 
+    // Print equation
+    practiceView.renderEquation(model.practiceModel);
 };
 
 // Choose random equation from array
@@ -52,16 +50,39 @@ const chooseEquation = arr => {
     return arr[Math.floor(Math.random() * 100)];
 };
 
-// Check if the input is full and 
-const checkAnswer = arr => {
-    let answer;
-    // Check is input has the same amount of characters as chosen equations value
-    if (equationObj.value.toString().length < arr.length || equationObj.value.toString().length > arr.length) {
-        // If input array has less or more characters than correct answer return false
-        answer = false;
-    } else if (equationObj.value.toString().length === arr.length && equationObj.value === parseInt(arr)) {
-        // If input array has same amount of characters as correct answer, and it's correct answer return true
-        answer = true;
+// When correct answer
+const nextEquation = () => {
+    model.score += 1;
+    updateStatus('success');
+    model.input = [];
+    model.timer = 0;
+    practiceView.renderEquation(model.practiceModel);
+};
+
+// Add key press to an array
+const addKey = key => {
+    if (model.value.toString().length > model.input.length) {
+        model.input.push(key);
     };
-    return answer;
+};
+
+// Update status of equation object
+const updateStatus = str => {
+    model.equationObj.status = str;
+};
+
+// Check if the input is full length and the answer correct
+const isFullCorrectInput = () => {
+    model.valueLength = model.value.toString().length;
+
+    // Check is input has the same amount of characters as chosen equations value
+    if (model.valueLength < model.input.length || 
+        model.valueLength > model.input.length) {
+        // If input array has less or more characters than correct answer return false
+        return false;
+    } else if (model.valueLength === model.input.length && 
+        model.value === parseInt(model.input.join(''))) {
+        // If input array has same amount of characters as correct answer, and it's correct answer return true
+        return true;
+    };
 };
