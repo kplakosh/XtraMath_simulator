@@ -15,29 +15,47 @@ var model = {
 export const startPractice = arr => {
     // Choose an equation to print
     model.equationObj = chooseEquation(arr);
-    model.equation = model.equationObj.name;
-    model.value = model.equationObj.value;
 
-    // Create new model passing equations info
+    // Print new equation passing equations info
     model.practiceModel = new PracticeModel(model.score, model.equation, model.value, model.input.join(''), model.timer);
+
+    // console.log(`Score ${model.score}`);
+    // console.log(`Timer ${model.timer}`);
+    // console.log(`Obj ${model.equationObj}`);
+    // console.log(model.equationObj);
+    // console.log(`Equation ${model.equation}`);
+    // console.log(`Input ${model.input.join('')}`);
+    // console.log(`To Print ${model.practiceModel}`);
+    // console.log(model.practiceModel);
+    // console.log(`Value ${model.value}`);
+
 
     // Handel keypress 
     window.addEventListener('keypress', event => {
         practiceView.clearMiddle();
+    
+        // Add key press to an array
+        if (model.value.toString().length > model.input.length) {
+            model.input += event.key;
+        };
 
-        console.log(event.key);
-        console.log(addKey(event.key));
-        addKey(event.key);
-        console.log(model.practiceModel);
+        console.log(model.input);
+        console.log(`Pressed key ${event.key}`);
+        
         practiceView.renderEquation(model.practiceModel);
         if (isFullCorrectInput() === true) {
+            // 1. Update Equation object value with success
+            updateStatus('success');
 
-            console.log(model.practiceModel);
-            // 1. Update score
-            let next = nextEquation(chooseEquation(arr));
+            // 2. Update score
+            model.score +=1;
+
+            // 3. Choose new equation
+            let next = chooseEquation(arr);
+            nextEquation();
             console.log(next);
         } else {
-            // 2. Update Equation object value with fail
+            // 1. Update Equation object value with fail
             updateStatus('fail');
         };
     });
@@ -47,7 +65,9 @@ export const startPractice = arr => {
 
 // Choose random equation from array
 const chooseEquation = arr => {
-    return arr[Math.floor(Math.random() * 100)];
+    model.equationObj = arr[Math.floor(Math.random() * 100)];
+    model.equation = model.equationObj.name;
+    model.value = model.equationObj.value;
 };
 
 // When correct answer
@@ -60,11 +80,7 @@ const nextEquation = () => {
 };
 
 // Add key press to an array
-const addKey = key => {
-    if (model.value.toString().length > model.input.length) {
-        model.input.push(key);
-    };
-};
+
 
 // Update status of equation object
 const updateStatus = str => {
@@ -81,7 +97,7 @@ const isFullCorrectInput = () => {
         // If input array has less or more characters than correct answer return false
         return false;
     } else if (model.valueLength === model.input.length && 
-        model.value === parseInt(model.input.join(''))) {
+        model.value === parseInt(model.input)) {
         // If input array has same amount of characters as correct answer, and it's correct answer return true
         return true;
     };
