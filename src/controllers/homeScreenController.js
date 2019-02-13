@@ -1,4 +1,4 @@
-import { renderChartGrid, displayBtn, operationName } from '../view/homeScreenView';
+import { renderChartGrid, displayBtn, operationName, clearHomeScreen } from '../view/homeScreenView';
 
 // Render home screen 
 export const render = arr => {

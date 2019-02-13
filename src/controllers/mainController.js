@@ -29,6 +29,10 @@ export default function startApplication() {
 const handleClick = arr => {
     elements.btn.addEventListener('click', () => {
         clearHomeScreen();
-        startPractice(arr);
+        startPractice(arr, onPracticeFinished);
     });
+};
+
+const onPracticeFinished = arr => {
+    homeScreenController.render(arr);
 };

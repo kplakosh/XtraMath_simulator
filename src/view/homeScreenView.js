@@ -53,7 +53,7 @@ const createGrid = array => {
         grid.push(createLine(array, i));
     }
     return grid.join('');
-}
+};
 
 // Create full grid
 export const renderChartGrid = array => {
@@ -94,8 +94,6 @@ export const renderChartGrid = array => {
     `;
     elements.middle.insertAdjacentHTML("afterbegin", markup);
 };
-
-
 
 // Display button in the bottom section
 export const displayBtn = () => {

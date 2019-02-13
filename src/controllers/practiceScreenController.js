@@ -1,14 +1,21 @@
 import * as practiceView from '../view/practiceScreenView';
 import PracticeModel from '../models/PracticeModel';
 
-export const startPractice = arr => {
+export const startPractice = (arr, onPracticeFinished) => {
     var timerIdHolder = {};
 
     // Print new equation passing equations info
     var practiceModel = new PracticeModel(0, chooseEquation(arr), '', 0);
 
-    // Handel keypress 
-    window.addEventListener('keypress', async event => {
+    var parameters = {
+        practiceModel: practiceModel,
+        timerIdHolder: timerIdHolder,
+        onPracticeFinished: onPracticeFinished,
+        arr: arr,
+        keyPressHandler: keyPressHandler
+    };
+
+    var keyPressHandler = async event => {
         if (practiceModel.equation.value.length > practiceModel.input.length) {
             practiceModel.input += event.key;
         };
@@ -30,8 +37,8 @@ export const startPractice = arr => {
 
                 practiceModel.equation = chooseEquation(arr);
                 practiceView.renderEquation(practiceModel);
-                
-                timerIdHolder.id = startTimer(practiceModel, timerIdHolder);
+
+                timerIdHolder.id = startTimer(parameters);
             } else if (practiceModel.input != practiceModel.equation.value) {
                 stopTimer(timerIdHolder);
 
@@ -49,29 +56,37 @@ export const startPractice = arr => {
                 practiceView.renderEquation(practiceModel);
             }
         }
-    });
+    };
+
+    // Handel keypress 
+    window.addEventListener('keypress', keyPressHandler);
     practiceView.renderEquation(practiceModel);
-    timerIdHolder.id = startTimer(practiceModel, timerIdHolder);
+    timerIdHolder.id = startTimer(parameters);
 };
 
-var startTimer = (model, timerIdHolder) => {
-    return setInterval(updateSeconds, 1000, model, timerIdHolder);
+var startTimer = (parameters) => {
+    return setInterval(updateSeconds, 1000, parameters);
 };
 
 var stopTimer = id => {
     clearInterval(id);
 };
 
-var updateSeconds = async (model, timerIdHolder) => {
-    model.seconds += 1;
+var updateSeconds = async (parameters) => {
+    parameters.practiceModel.seconds += 1;
+    practiceView.renderEquation(parameters.practiceModel);
 
-    if (model.seconds === 3) {
-        stopTimer(timerIdHolder.id);
-        model.equation.status = 'fail';
+    if (parameters.practiceModel.seconds === 3) {
+        stopTimer(parameters.timerIdHolder.id);
+        parameters.practiceModel.equation.status = 'fail';
+        practiceView.renderEquation(parameters.practiceModel);
+        window.removeEventListener('keypress', parameters.keyPressHandler);
+
+        await delay(3000);
+
+        practiceView.clearMiddle();
+        parameters.onPracticeFinished(parameters.arr);
     }
-
-    practiceView.renderEquation(model);
-    await delay(3000);
 };
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
