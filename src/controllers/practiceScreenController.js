@@ -2,7 +2,7 @@ import * as practiceView from '../view/practiceScreenView';
 import PracticeModel from '../models/PracticeModel';
 
 export const startPractice = arr => {
-    var timer;
+    var timerIdHolder = {};
 
     // Print new equation passing equations info
     var practiceModel = new PracticeModel(0, chooseEquation(arr), '', 0);
@@ -17,7 +17,7 @@ export const startPractice = arr => {
             // If an input is full
             if (practiceModel.input === practiceModel.equation.value) {
                 // If an input is correct update the equation status with success
-                stopTimer(timer);
+                stopTimer(timerIdHolder);
 
                 practiceModel.equation.status = 'success';
                 practiceModel.score += 1;
@@ -31,40 +31,47 @@ export const startPractice = arr => {
                 practiceModel.equation = chooseEquation(arr);
                 practiceView.renderEquation(practiceModel);
                 
-                timer = startTimer(practiceModel);
+                timerIdHolder.id = startTimer(practiceModel, timerIdHolder);
             } else if (practiceModel.input != practiceModel.equation.value) {
-                stopTimer(timer);
+                stopTimer(timerIdHolder);
 
                 practiceModel.equation.status = 'fail';
                 practiceView.renderEquation(practiceModel);
             };
         } else if (practiceModel.input.length < practiceModel.equation.value.length) { // If an input is not full 
             if (!practiceModel.equation.value.startsWith(practiceModel.input)) {
-                stopTimer(timer);
+                stopTimer(timerIdHolder);
 
                 practiceModel.equation.status = 'fail';
                 practiceView.renderEquation(practiceModel);
             } else {
                 // If an input is correct print equation with input
                 practiceView.renderEquation(practiceModel);
-            };
-        };
+            }
+        }
     });
     practiceView.renderEquation(practiceModel);
-    timer = startTimer(practiceModel);
+    timerIdHolder.id = startTimer(practiceModel, timerIdHolder);
 };
 
-var startTimer = model => {
-    return setInterval(updateSeconds, 1000, model);
+var startTimer = (model, timerIdHolder) => {
+    return setInterval(updateSeconds, 1000, model, timerIdHolder);
 };
 
 var stopTimer = id => {
     clearInterval(id);
 };
 
-var updateSeconds = model => {
+var updateSeconds = async (model, timerIdHolder) => {
     model.seconds += 1;
+
+    if (model.seconds === 3) {
+        stopTimer(timerIdHolder.id);
+        model.equation.status = 'fail';
+    }
+
     practiceView.renderEquation(model);
+    await delay(3000);
 };
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
