@@ -150,7 +150,12 @@ li {
     border-bottom: 3px solid black;
 }
 
-#answer {
+.answer {
+   display: inline-flex; 
+   flex-flow: row;
+}
+
+.correct-answer {
     color: black;
     width: 150px;
     font-size: 65px;
@@ -158,12 +163,18 @@ li {
     margin-left: 325px;
 }
 
-#hint {
+.hint {
     color: lightgray;
     width: 150px;
     font-size: 65px;
     text-align: right;
     margin-left: 325px;
+}
+
+.mistake {
+    color: red;
+    text-decoration: line-through;
+    font-size: 38px;
 }
 
 .timer {

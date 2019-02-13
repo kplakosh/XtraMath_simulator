@@ -7,8 +7,6 @@ export const startPractice = arr => {
 
     // Handel keypress 
     window.addEventListener('keypress', async event => {
-        practiceView.clearMiddle();
-    
         if (practiceModel.equation.value.length > practiceModel.input.length) {
             practiceModel.input += event.key;
         };
@@ -31,12 +29,12 @@ export const startPractice = arr => {
                 
             } else if (practiceModel.input != practiceModel.equation.value) {
                 practiceModel.equation.status = 'fail';
-                practiceView.clearMiddle();
+                practiceView.renderEquation(practiceModel);
             };
         } else if (practiceModel.input.length < practiceModel.equation.value.length) {
             // If an input is not full 
             if (practiceModel.input != practiceModel.equation.value) {
-                practiceView.clearMiddle();
+                practiceModel.equation.status = 'fail';
                 practiceView.renderEquation(practiceModel);
             } else if (practiceModel.input === practiceModel.equation.value) {
                 // If an input is correct print equation with input

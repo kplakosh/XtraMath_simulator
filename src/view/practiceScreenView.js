@@ -46,7 +46,7 @@ const displayTimer = seconds => {
 
 // Display practice screen
 export const renderEquation = model => {
-    // Display Score 
+    clearMiddle();
     displayScore(model.score);
 
     // Display equation 
@@ -60,7 +60,10 @@ export const renderEquation = model => {
                 <p>${model.equation.name.charAt(2)}</p>
             </div>
         </div>
-        <p id="answer">${model.input}</p>
+        <div class="answer"> 
+            <p class="${(model.equation.status === 'fail' ? "hint" : "correct-answer")}">${(model.equation.status === 'fail' ? model.equation.value : model.input)}</p>
+            <p class="${(model.equation.status === 'fail' ? "mistake" : "")}">${(model.equation.status === 'fail' ? model.input : "")}</p>
+        </div>
         <div class="timer">
             ${displayTimerRed(model.seconds)}
             ${displayTimer(model.seconds)}
@@ -77,7 +80,6 @@ export const renderEquation = model => {
 
 // Display answer 
 
-// Display mistake
 
 
 

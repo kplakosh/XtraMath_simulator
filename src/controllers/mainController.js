@@ -16,7 +16,6 @@ export default function startApplication() {
         };
     };
 
-    console.log(additionEquationsArray);
     homeScreenController.render(additionEquationsArray);
 
     // 3. Use local storage to keep track of answers 
