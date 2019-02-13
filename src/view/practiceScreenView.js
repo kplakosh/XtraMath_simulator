@@ -56,8 +56,8 @@ export const renderEquation = model => {
                 <p>+</p>
             </div>
             <div class="num">
-                <p>${model.name.charAt(0)}</p>
-                <p>${model.name.charAt(2)}</p>
+                <p>${model.equation.name.charAt(0)}</p>
+                <p>${model.equation.name.charAt(2)}</p>
             </div>
         </div>
         <p id="answer">${model.input}</p>

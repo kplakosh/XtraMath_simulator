@@ -12,7 +12,7 @@ export default function startApplication() {
     for(let i = 0; i < 10; i ++) {
         for(let j = 0; j < 10; j ++) {
             // Make sure name of status and name of class in css file is the same
-            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', i+j));
+            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
         };
     };
 
