@@ -9,12 +9,21 @@ export default function startApplication() {
     var additionEquationsArray = [];
     
     // 2. Fill out equations array with default values for addition
-    for(let i = 0; i < 10; i ++) {
-        for(let j = 0; j < 10; j ++) {
+    // for(let i = 0; i < 10; i ++) {
+    //     for(let j = 0; j < 10; j ++) {
+    //         // Make sure name of status and name of class in css file is the same
+    //         additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
+    //     };
+    // };
+
+    for (let i = 14; i >= 1; i--) {
+        for (let j = 1; j <= i; j++) {
             // Make sure name of status and name of class in css file is the same
-            additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
+            additionEquationsArray.push(new Equation(`${i}-${j}`, 'notTested', [i, j], '-', (i - j).toString()));
         };
     };
+
+    console.log(additionEquationsArray);
 
     homeScreenController.render(additionEquationsArray);
 

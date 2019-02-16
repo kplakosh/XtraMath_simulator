@@ -11,8 +11,7 @@ export const startPractice = (arr, onPracticeFinished) => {
         practiceModel: practiceModel,
         timerIdHolder: timerIdHolder,
         onPracticeFinished: onPracticeFinished,
-        arr: arr,
-        keyPressHandler: keyPressHandler
+        arr: arr
     };
 
     var keyPressHandler = async event => {
@@ -24,7 +23,7 @@ export const startPractice = (arr, onPracticeFinished) => {
             // If an input is full
             if (practiceModel.input === practiceModel.equation.value) {
                 // If an input is correct update the equation status with success
-                stopTimer(timerIdHolder);
+                stopTimer(timerIdHolder.id);
 
                 practiceModel.equation.status = 'success';
                 practiceModel.score += 1;
@@ -40,23 +39,19 @@ export const startPractice = (arr, onPracticeFinished) => {
 
                 timerIdHolder.id = startTimer(parameters);
             } else if (practiceModel.input != practiceModel.equation.value) {
-                stopTimer(timerIdHolder);
-
-                practiceModel.equation.status = 'fail';
-                practiceView.renderEquation(practiceModel);
+                practiceFinished(parameters);
             };
         } else if (practiceModel.input.length < practiceModel.equation.value.length) { // If an input is not full 
             if (!practiceModel.equation.value.startsWith(practiceModel.input)) {
-                stopTimer(timerIdHolder);
-
-                practiceModel.equation.status = 'fail';
-                practiceView.renderEquation(practiceModel);
+                practiceFinished(parameters);
             } else {
-                // If an input is correct print equation with input
+                // If an input is correct then print equation with input
                 practiceView.renderEquation(practiceModel);
             }
         }
     };
+
+    parameters.keyPressHandler = keyPressHandler;
 
     // Handel keypress 
     window.addEventListener('keypress', keyPressHandler);
@@ -72,22 +67,29 @@ var stopTimer = id => {
     clearInterval(id);
 };
 
-var updateSeconds = async (parameters) => {
+var updateSeconds = parameters => {
     parameters.practiceModel.seconds += 1;
     practiceView.renderEquation(parameters.practiceModel);
 
     if (parameters.practiceModel.seconds === 3) {
-        stopTimer(parameters.timerIdHolder.id);
-        parameters.practiceModel.equation.status = 'fail';
-        practiceView.renderEquation(parameters.practiceModel);
-        window.removeEventListener('keypress', parameters.keyPressHandler);
-
-        await delay(3000);
-
-        practiceView.clearMiddle();
-        parameters.onPracticeFinished(parameters.arr);
+        practiceFinished(parameters);
     }
 };
+
+const practiceFinished = async (parameters) => {
+    console.log(parameters);
+
+    stopTimer(parameters.timerIdHolder.id);
+    window.removeEventListener('keypress', parameters.keyPressHandler);
+
+    parameters.practiceModel.equation.status = 'fail';
+    practiceView.renderEquation(parameters.practiceModel);
+
+    await delay(3000);
+
+    practiceView.clearMiddle();
+    parameters.onPracticeFinished(parameters.arr);
+}
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 

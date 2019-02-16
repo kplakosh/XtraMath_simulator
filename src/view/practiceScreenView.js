@@ -53,11 +53,11 @@ export const renderEquation = model => {
     const markup = `
         <div class="problem">
             <div class="sum">
-                <p>+</p>
+                <p>${model.equation.operator}</p>
             </div>
             <div class="num">
-                <p>${model.equation.name.charAt(0)}</p>
-                <p>${model.equation.name.charAt(2)}</p>
+                <p>${model.equation.operands[0]}</p>
+                <p>${model.equation.operands[1]}</p>
             </div>
         </div>
         <div class="answer"> 
