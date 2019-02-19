@@ -11,27 +11,33 @@ export default function startApplication() {
     // Choose operation
     var operationSelector = elements.operationSelector;
     var operation = operationSelector.options[operationSelector.selectedIndex].value;
+    
+    // Read value from local storage
+    arrayEquations = readStorage();
 
-    if (operation === 'addition') {
-        // Addition chard
-        for(let i = 0; i < 10; i ++) {
-            for(let j = 0; j < 10; j ++) {
-                // Make sure name of status and name of class in css file is the same
-                arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
+    // Check if localStorage contain any data
+    if (arrayEquations === 'undefined') { 
+        // Create new array of Equation objects to display in chart
+        if (operation === 'addition') {
+            // Addition chart
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    // Make sure name of status and name of class in css file is the same
+                    arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i + j).toString()));
+                };
             };
-        };
-    } else if (operation === 'subtraction') {
-        // Subtraction chard
-        for (let i = 0; i < 10; i++) {
-            for (let j = 0; j < 10; j++) {
-                // Make sure name of status and name of class in css file is the same
-                arrayEquations.push(new Equation(`${i + j}-${j}`, 'notTested', [i + j, j], '-', (i + j - j).toString()));
+        } else if (operation === 'subtraction') {
+            // Subtraction chart
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    // Make sure name of status and name of class in css file is the same
+                    arrayEquations.push(new Equation(`${i + j}-${j}`, 'notTested', [i + j, j], '-', (i + j - j).toString()));
+                };
             };
-        };
+        }
     }
 
-    // Read value from local storage to keep track of answers
-    homeScreenController.render(readStorage());
+    homeScreenController.render(arrayEquations);
 
     // Listen for button click to start practice
     handleClick(arrayEquations);
