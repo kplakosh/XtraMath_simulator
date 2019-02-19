@@ -94,5 +94,7 @@ const delay = ms => new Promise(res => setTimeout(res, ms));
 
 // Choose random equation
 const chooseEquation = arr => {
-    return arr[Math.floor(Math.random() * 100)];
+    var equation = arr[Math.floor(Math.random() * 100)];
+    equation.status = 'notTested';
+    return equation;
 };
