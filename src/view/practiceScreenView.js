@@ -11,9 +11,13 @@ const displayScore = score => {
     elements.top.innerHTML = markupScore;
 };
 
+export const clearScore = () => {
+    elements.top.innerHTML = "";
+};
+
 // Clear middle
 export const clearMiddle = () => {
-    elements.middle.innerHTML = '';
+    elements.middle.innerHTML = "";
 };
 
 // Display counted timer

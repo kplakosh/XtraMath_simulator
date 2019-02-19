@@ -7,6 +7,26 @@ export const clearHomeScreen = () => {
     elements.testName.style = "display: none;";
 };
 
+export const displayHomeScreen = () => {
+    // elements.middle.innerHTML = '';
+    elements.top.insertAdjacentHTML("afterbegin", printHeader);
+    
+    elements.btn.style = "display: block;";
+}
+
+// Render header of chart
+const printHeader = `
+    <div class="test-name">
+        <H1>Placement Quiz</H1>
+        <select id="operation-name">
+            <option value="addition">Addition</option>
+            <option value="subtraction" selected="selected">Subtraction</option>
+            <option value="multiplication">Multiplication</option>
+            <option value="division">Division</option>
+        </select>
+    </div>
+`;
+
 // Create one equation make sure status name and name of class in css file same
 const createEquation = equation => `
     <li class="${equation.status}">${equation.name}</li> 
@@ -84,8 +104,6 @@ export const renderChartGrid = array => {
 
 // Display button in the bottom section
 export const displayBtn = () => {
-    if (elements.btn.style === "none") {
-        elements.btn.style = 'block';
-    };
+    elements.btn.className = "";
 };
 

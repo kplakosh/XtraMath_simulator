@@ -1,6 +1,6 @@
 import Equation from "../models/Equation"
 import * as homeScreenController from './homeScreenController';
-import { clearHomeScreen } from '../view/homeScreenView';
+import { clearHomeScreen, displayHomeScreen } from '../view/homeScreenView';
 import { elements } from "../view/base";
 import { startPractice } from './practiceScreenController';
 
@@ -53,6 +53,7 @@ const handleClick = arr => {
 
 const onPracticeFinished = arr => {
     homeScreenController.render(arr);
+    displayHomeScreen();
     persistData(arr);
 };
 

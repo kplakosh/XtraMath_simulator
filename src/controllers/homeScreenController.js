@@ -1,4 +1,4 @@
-import { renderChartGrid, displayBtn, operationName } from '../view/homeScreenView';
+import { renderChartGrid, displayBtn } from '../view/homeScreenView';
 
 // Render home screen 
 export const render = arr => {
@@ -8,5 +8,3 @@ export const render = arr => {
     // Display button
     displayBtn();
 };
-
-

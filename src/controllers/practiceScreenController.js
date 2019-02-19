@@ -86,6 +86,7 @@ const practiceFinished = async (parameters) => {
     await delay(3000);
 
     practiceView.clearMiddle();
+    practiceView.clearScore();
     parameters.onPracticeFinished(parameters.arr);
 }
 

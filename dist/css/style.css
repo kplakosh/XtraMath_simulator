@@ -109,12 +109,12 @@ li {
 }
 
 .notTested {
-    background-color: #a8a8a8;
+    background-color: lightgray;
 }
 
 .success {
-    background-color: green;
-    color: gray;
+    background-color: #79ab3c;
+    color: black;
 }
 
 .fail {
@@ -210,7 +210,7 @@ li {
     padding-top: 10px;
 }
 
-.btn-box {
+#btn-box {
     /* display: none; */
     background-color: #ffffff;
     border: 1px solid lightgray;
@@ -230,4 +230,8 @@ li {
     margin: auto;
     font-size: 14px;
     color: #ffffff;
+}
+
+.hidden {
+    display: none;
 }
