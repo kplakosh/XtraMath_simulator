@@ -77,8 +77,6 @@ var updateSeconds = parameters => {
 };
 
 const practiceFinished = async (parameters) => {
-    console.log(parameters);
-
     stopTimer(parameters.timerIdHolder.id);
     window.removeEventListener('keypress', parameters.keyPressHandler);
 

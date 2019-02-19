@@ -5,7 +5,7 @@ import { elements } from "../view/base";
 import { startPractice } from './practiceScreenController';
 
 export default function startApplication() {
-    // 1. Initialize array of addition equations
+    // Initialize array of addition equations
     var arrayEquations = [];
     
     // Choose operation
@@ -30,11 +30,10 @@ export default function startApplication() {
         };
     }
 
-    homeScreenController.render(arrayEquations);
+    // Read value from local storage to keep track of answers
+    homeScreenController.render(readStorage());
 
-    // 3. Use local storage to keep track of answers 
-
-    // 4. Listen for button click to start practice
+    // Listen for button click to start practice
     handleClick(arrayEquations);
 };
 
@@ -48,4 +47,15 @@ const handleClick = arr => {
 
 const onPracticeFinished = arr => {
     homeScreenController.render(arr);
+    persistData(arr);
 };
+
+const persistData = arr => {
+    localStorage.setItem('results', JSON.stringify(arr));
+}
+
+const readStorage = () => {
+    const storage = JSON.parse(localStorage.getItem('results'));
+
+    if (storage) return storage;
+}
