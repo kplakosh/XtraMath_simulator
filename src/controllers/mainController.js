@@ -8,22 +8,27 @@ export default function startApplication() {
     // 1. Initialize array of addition equations
     var arrayEquations = [];
     
+    // Choose operation
+    var operationSelector = elements.operationSelector;
+    var operation = operationSelector.options[operationSelector.selectedIndex].value;
 
-    // // Addition chard
-    // for(let i = 0; i < 10; i ++) {
-    //     for(let j = 0; j < 10; j ++) {
-    //         // Make sure name of status and name of class in css file is the same
-    //         arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
-    //     };
-    // };
-
-    // Subtraction chard
-    for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-            // Make sure name of status and name of class in css file is the same
-            arrayEquations.push(new Equation(`${i+j}-${j}`, 'notTested', [i+j, j], '-', (i+j - j).toString()));
+    if (operation === 'addition') {
+        // Addition chard
+        for(let i = 0; i < 10; i ++) {
+            for(let j = 0; j < 10; j ++) {
+                // Make sure name of status and name of class in css file is the same
+                arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
+            };
         };
-    };
+    } else if (operation === 'subtraction') {
+        // Subtraction chard
+        for (let i = 0; i < 10; i++) {
+            for (let j = 0; j < 10; j++) {
+                // Make sure name of status and name of class in css file is the same
+                arrayEquations.push(new Equation(`${i + j}-${j}`, 'notTested', [i + j, j], '-', (i + j - j).toString()));
+            };
+        };
+    }
 
     homeScreenController.render(arrayEquations);
 

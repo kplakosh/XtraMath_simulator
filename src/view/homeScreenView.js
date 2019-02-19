@@ -7,21 +7,6 @@ export const clearHomeScreen = () => {
     elements.testName.style = "display: none;";
 };
 
-// Display name of operation in DOM
-export const operationName = char => {
-    if (char === '+') {
-        elements.operation.innerHTML = 'Addition';
-    } else if (char === '-') {
-        elements.operation.innerHTML = 'Subtraction';
-    } else if (char === 'x') {
-        elements.operation.innerHTML = 'Multiplication';
-    } else if (char === '÷') {
-        elements.operation.innerHTML = 'Division';
-    };
-};
-
-
-
 // Create one equation make sure status name and name of class in css file same
 const createEquation = equation => `
     <li class="${equation.status}">${equation.name}</li> 
