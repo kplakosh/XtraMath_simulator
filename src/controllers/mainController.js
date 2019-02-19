@@ -6,32 +6,31 @@ import { startPractice } from './practiceScreenController';
 
 export default function startApplication() {
     // 1. Initialize array of addition equations
-    var additionEquationsArray = [];
+    var arrayEquations = [];
     
-    // 2. Fill out equations array with default values for addition
+
+    // // Addition chard
     // for(let i = 0; i < 10; i ++) {
     //     for(let j = 0; j < 10; j ++) {
     //         // Make sure name of status and name of class in css file is the same
-    //         additionEquationsArray.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
+    //         arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i+j).toString()));
     //     };
     // };
 
-    for (let i = 14; i >= 1; i--) {
-        for (let j = 1; j <= i; j++) {
+    // Subtraction chard
+    for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
             // Make sure name of status and name of class in css file is the same
-            additionEquationsArray.push(new Equation(`${i}-${j}`, 'notTested', [i, j], '-', (i - j).toString()));
+            arrayEquations.push(new Equation(`${i+j}-${j}`, 'notTested', [i+j, j], '-', (i+j - j).toString()));
         };
     };
 
-    console.log(additionEquationsArray);
-
-    homeScreenController.render(additionEquationsArray);
+    homeScreenController.render(arrayEquations);
 
     // 3. Use local storage to keep track of answers 
 
     // 4. Listen for button click to start practice
-    handleClick(additionEquationsArray);
-
+    handleClick(arrayEquations);
 };
 
 // Clear home screen from success chart and button itself

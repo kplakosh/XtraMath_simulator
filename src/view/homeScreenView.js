@@ -20,12 +20,14 @@ export const operationName = char => {
     };
 };
 
+
+
 // Create one equation make sure status name and name of class in css file same
 const createEquation = equation => `
     <li class="${equation.status}">${equation.name}</li> 
 `;
 
-// Create line of equations
+// Create line of addition equations
 const createEquationLine = (arr, lineNum) => {
     let num = parseInt(`${lineNum}0`);
     let lastNum = num + 10;
