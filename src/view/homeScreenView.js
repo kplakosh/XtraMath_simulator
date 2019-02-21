@@ -12,6 +12,7 @@ export const displayHomeScreen = () => {
     elements.top.insertAdjacentHTML("afterbegin", printHeader);
     
     elements.btn.style = "display: block;";
+    document.querySelector("button").focus();
 }
 
 // Render header of chart
@@ -99,11 +100,12 @@ export const renderChartGrid = array => {
             </div>
         </div>
     `;
-    elements.middle.insertAdjacentHTML("afterbegin", markup);
+    elements.middle.insertAdjacentHTML("afterBegin", markup);
 };
 
 // Display button in the bottom section
 export const displayBtn = () => {
     elements.btn.className = "";
+    document.querySelector("button").focus();
 };
 

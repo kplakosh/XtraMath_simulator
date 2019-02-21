@@ -8,7 +8,8 @@ const displayScore = score => {
             <p id="face">🙂</p>
         </div>
     `;
-    elements.top.innerHTML = markupScore;
+//    elements.top.innerHTML = markupScore;
+    console.log(score);
 };
 
 export const clearScore = () => {
