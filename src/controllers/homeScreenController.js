@@ -1,6 +1,5 @@
-import { renderChartGrid, displayBtn } from '../view/homeScreenView';
 import Equation from "../models/Equation"
-import { clearHomeScreen, displayHomeScreen } from '../view/homeScreenView';
+import { renderChartGrid, displayBtn, clearHomeScreen, displayHomeScreen } from '../view/homeScreenView';
 import { elements } from "../view/base";
 import { startPractice } from './practiceScreenController';
 
@@ -14,14 +13,15 @@ const render = arr => {
 };
 
 export default function startApplication() {
-    // Initialize array of addition equations
-    var arrayEquations = [];
-
     // Read value from local storage
-    arrayEquations = readStorage();
+   var arrayEquations = readStorage();
+
+    var select = document.querySelector('#operation-name');
+    var operation = select.options[select.selectedIndex].value;
 
     // Check if localStorage contain any data
-    if (arrayEquations === 'undefined') {
+    if (arrayEquations === undefined) {
+        arrayEquations = [];
         // Create new array of Equation objects to display in chart
         if (operation === 'addition') {
             // Addition chart
@@ -44,18 +44,18 @@ export default function startApplication() {
 
     render(arrayEquations);
 
-    // Choose operation
-    handelSelect(document.querySelector('#operation-name'));
+    // // Choose operation
+    // handelSelect(document.querySelector('#operation-name'));
 
     // Listen for button click to start practice
     handleClick(arrayEquations);
 };
 
-const handelSelect = element => {
-    element.addEventListener('select', () => {
+// const handelSelect = element => {
+//     element.addEventListener('select', () => {
         
-    });
-}
+//     });
+// }
 
 // Clear home screen from success chart and button itself
 const handleClick = arr => {

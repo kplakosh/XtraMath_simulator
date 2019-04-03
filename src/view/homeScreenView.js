@@ -13,7 +13,7 @@ export const displayHomeScreen = () => {
     
     elements.btn.style = "display: block;";
     document.querySelector("button").focus();
-}
+};
 
 // Render header of chart
 const printHeader = `
@@ -43,7 +43,7 @@ const createEquationLine = (arr, lineNum) => {
         num += 1;
     }
     return liLine.join('');
-}
+};
 
 // Create line of grid
 const createLine = (equationArray, lineNum) => `
