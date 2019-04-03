@@ -1,8 +1,8 @@
-#XtraMath simulator
+# XtraMath simulator
 
 
 
-##Introduction
+## Introduction
 
 XtraMath simulator is a web application which helps a user to master basic skills in solving simple math facts such as addition, subtraction, multiplication, and division. XtraMath simulator challenges a person's mathematical skills against clock. 
 
@@ -16,12 +16,12 @@ XtraMath simulator is a web application which helps a user to master basic skill
 - After each time user takes the quiz the results are stored/updated in the local storage for comfortable tracking of users progress. 
 - Original idea: <a href="https://xtramath.org/#/home/index">XtraMath</a>
 
-##Requirements
+## Requirements
 
 - Install Node.js (see https://nodejs.org/en/)
 - This project requires npm installation (see https://www.npmjs.com/get-npm). Require npm version 6.7.0 or higher.
 
-##Getting Started
+## Getting Started
 
 To start mastering skills on your computer you need to download the copy of the project and install npm. 
 
