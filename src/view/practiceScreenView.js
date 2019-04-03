@@ -75,16 +75,4 @@ export const renderEquation = model => {
         </div>
     `;
     elements.middle.innerHTML = markup;
-
-    
-
-    // displayTimerRed(model.redTimer);
-
-    // displayTimer(model.greyTimer);
 };
-
-// Display answer 
-
-
-
-

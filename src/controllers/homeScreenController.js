@@ -13,11 +13,14 @@ const render = arr => {
 };
 
 export default function startApplication() {
-    // Read value from local storage
-   var arrayEquations = readStorage();
-
+    // Read operation name
     var select = document.querySelector('#operation-name');
     var operation = select.options[select.selectedIndex].value;
+
+    // Read value from local storage
+    var arrayEquations = readStorage(operation);
+
+    var select = document.querySelector('#operation-name');
 
     // Check if localStorage contain any data
     if (arrayEquations === undefined) {
@@ -27,7 +30,7 @@ export default function startApplication() {
             // Addition chart
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
-                    // Make sure name of status and name of class in css file is the same
+                    // Make sure name of status and name of class in css file has same name
                     arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i + j).toString()));
                 };
             };
@@ -35,11 +38,18 @@ export default function startApplication() {
             // Subtraction chart
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
-                    // Make sure name of status and name of class in css file is the same
+                    // Make sure name of status and name of class in css file has same name
                     arrayEquations.push(new Equation(`${i + j}-${j}`, 'notTested', [i + j, j], '-', (i + j - j).toString()));
                 };
             };
-        }
+        } else if (operation === 'multiplication') {
+            // Multiplication chard
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    arrayEquations.push(new Equation(`${i}*${j}`, 'notTested', [i, j], '*', (i*j).toString()));
+                }
+            }
+        } 
     }
 
     render(arrayEquations);
@@ -72,11 +82,21 @@ const onPracticeFinished = arr => {
 };
 
 const persistData = arr => {
-    localStorage.setItem('results', JSON.stringify(arr));
+    var operationName = '';
+    if (arr.operation === '+') {
+        operationName = 'addition';
+    } else if (arr.operation === '-') {
+        operationName = 'subtraction';
+    } else if (arr.operation === '*') {
+        operationName = 'multiplication';
+    } else if (arr.operation === '÷') {
+        operationName = 'division';
+    }
+    localStorage.setItem((operationName).toString(), JSON.stringify(arr));
 }
 
-const readStorage = () => {
-    const storage = JSON.parse(localStorage.getItem('results'));
+const readStorage = (operationName) => {
+    const storage = JSON.parse(localStorage.getItem((operationName).toString()));
 
     if (storage) return storage;
 }
