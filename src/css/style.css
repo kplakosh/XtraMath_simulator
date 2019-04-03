@@ -112,6 +112,10 @@ li {
     background-color: lightgray;
 }
 
+.doNotDisplay {
+    background-color: #ffffff;
+}
+
 .success {
     background-color: #79ab3c;
     color: black;

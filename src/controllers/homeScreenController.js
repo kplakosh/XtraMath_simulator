@@ -49,7 +49,18 @@ export default function startApplication() {
                     arrayEquations.push(new Equation(`${i}*${j}`, 'notTested', [i, j], '*', (i*j).toString()));
                 }
             }
-        } 
+        } else if (operation === 'division') {
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    if (j === 0) {
+                        arrayEquations.push(new Equation(``, 'doNotDisplay', [], '÷', ''));
+                    } else {
+                        arrayEquations.push(new Equation(`${i * j}÷${j}`, 'notTested', [i * j, j], '÷', (i * j / j).toString()));
+                    }
+                } 
+            }
+
+        }
     }
 
     render(arrayEquations);
