@@ -25,7 +25,7 @@ XtraMath simulator is a web application which helps a user to master basic skill
 
 To start mastering skills on your computer you need to download the copy of the project and install npm. 
 
-Step 1. Download/cone <a href="https://github.com/kplakosh/XtraMath_simulator.git"> project file</a>.
+Step 1. Download/clone <a href="https://github.com/kplakosh/XtraMath_simulator.git"> project file</a>.
 ```
 git clone https://github.com/kplakosh/XtraMath_simulator.git
 ```
