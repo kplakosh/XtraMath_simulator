@@ -2,6 +2,7 @@ import { elements } from './base';
 
 // Clear middle part of main section from grid
 export const clearHomeScreen = () => {
+    document.querySelector('#operation-name').setAttribute("disabled", "disabled");
     elements.middle.innerHTML = '';
     elements.btn.style = "display: none;";
     // elements.testName.style = "display: none;";
