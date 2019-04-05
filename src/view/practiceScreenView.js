@@ -1,5 +1,13 @@
 import { elements } from './base';
 
+// Render header of quiz
+export const printHeader = name => `
+    <div class="test-name">
+        <H1>Placement Quiz</H1>
+        <p id="operation-name">${name}</p>
+    </div>
+`;
+
 // Add score
 const displayScore = score => {
     const markupScore = `

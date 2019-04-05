@@ -4,7 +4,6 @@ html {
 
 body {
     background-color: #819999;
-    /* justify-content: center; */
     align-items: center;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -17,6 +16,7 @@ ul {
 }
 
 ul {
+    display: table;
     list-style: none;
     padding: 0;
 }
@@ -27,11 +27,13 @@ li:first-child {
 }
 
 li {
+    display: table-cell;
     border: 1px solid gray;
     width: 2rem;
     height: 2rem;
     vertical-align: middle;
     font-size: 1rem;
+    text-align: center;
 }
 
 .quiz-block {

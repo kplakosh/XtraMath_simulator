@@ -14,13 +14,40 @@ const render = arr => {
 
 export default function startApplication() {
     // Read operation name
-    var select = document.querySelector('#operation-name');
-    var operation = select.options[select.selectedIndex].value;
+    var operation = readOperationName();
 
+    if (operation === null) {
+        operation = 'multiplication';
+        persistOperation(operation);
+    };
+
+    displayHomeScreen(operation);
+
+    var arrayEquations = initModelForOperation(operation);
+
+    render(arrayEquations);
+    
+    initSelectHandler();
+
+    // Listen for button click to start practice
+    handleClick(arrayEquations);
+};
+
+const initSelectHandler = () => {
+    var select = document.querySelector('#operation-name');
+    select.addEventListener('change', function (event) {
+        var operation = select.value;
+        persistOperation(operation);
+
+        var arrayEquations = initModelForOperation(operation);
+        render(arrayEquations);
+        handleClick(arrayEquations);
+    });
+}
+
+var initModelForOperation = operation => {
     // Read value from local storage
     var arrayEquations = readStorage(operation);
-
-    var select = document.querySelector('#operation-name');
 
     // Check if localStorage contain any data
     if (arrayEquations === undefined) {
@@ -31,7 +58,7 @@ export default function startApplication() {
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
                     // Make sure name of status and name of class in css file has same name
-                    arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', (i + j).toString()));
+                    arrayEquations.push(new Equation(`${i}+${j}`, 'notTested', [i, j], '+', (i + j).toString()));
                 };
             };
         } else if (operation === 'subtraction') {
@@ -46,7 +73,7 @@ export default function startApplication() {
             // Multiplication chard
             for (let i = 0; i < 10; i++) {
                 for (let j = 0; j < 10; j++) {
-                    arrayEquations.push(new Equation(`${i}*${j}`, 'notTested', [i, j], '*', (i*j).toString()));
+                    arrayEquations.push(new Equation(`${i}*${j}`, 'notTested', [i, j], '*', (i * j).toString()));
                 }
             }
         } else if (operation === 'division') {
@@ -57,26 +84,13 @@ export default function startApplication() {
                     } else {
                         arrayEquations.push(new Equation(`${i * j}÷${j}`, 'notTested', [i * j, j], '÷', (i * j / j).toString()));
                     }
-                } 
+                }
             }
 
         }
     }
-
-    render(arrayEquations);
-
-    // // Choose operation
-    // handelSelect(document.querySelector('#operation-name'));
-
-    // Listen for button click to start practice
-    handleClick(arrayEquations);
+    return arrayEquations;
 };
-
-// const handelSelect = element => {
-//     element.addEventListener('select', () => {
-        
-//     });
-// }
 
 // Clear home screen from success chart and button itself
 const handleClick = arr => {
@@ -88,26 +102,35 @@ const handleClick = arr => {
 
 const onPracticeFinished = arr => {
     render(arr);
-    displayHomeScreen();
+    displayHomeScreen(readOperationName());
+    initSelectHandler();
     persistData(arr);
 };
 
 const persistData = arr => {
     var operationName = '';
-    if (arr.operation === '+') {
+    if (arr[0].operator === '+') {
         operationName = 'addition';
-    } else if (arr.operation === '-') {
+    } else if (arr[0].operator === '-') {
         operationName = 'subtraction';
-    } else if (arr.operation === '*') {
+    } else if (arr[0].operator === '*') {
         operationName = 'multiplication';
-    } else if (arr.operation === '÷') {
+    } else if (arr[0].operator === '÷') {
         operationName = 'division';
     }
     localStorage.setItem((operationName).toString(), JSON.stringify(arr));
 }
 
-const readStorage = (operationName) => {
+const persistOperation = name => {
+    localStorage.setItem('selectedOperationName', name);
+}
+
+const readStorage = operationName => {
     const storage = JSON.parse(localStorage.getItem((operationName).toString()));
 
     if (storage) return storage;
+}
+
+const readOperationName = () => {
+    return localStorage.getItem('selectedOperationName')
 }

@@ -4,24 +4,26 @@ import { elements } from './base';
 export const clearHomeScreen = () => {
     elements.middle.innerHTML = '';
     elements.btn.style = "display: none;";
-    elements.testName.style = "display: none;";
+    // elements.testName.style = "display: none;";
 };
 
-export const displayHomeScreen = () => {
-    // elements.middle.innerHTML = '';
+export const displayHomeScreen = (operation) => {
     elements.top.insertAdjacentHTML("afterbegin", printHeader);
+
+    var select = document.querySelector('#operation-name');
+    select.value = operation;
     
     elements.btn.style = "display: block;";
     document.querySelector("button").focus();
 };
 
 // Render header of chart
-const printHeader = `
+const printHeader  = `
     <div class="test-name">
         <H1>Placement Quiz</H1>
         <select id="operation-name">
             <option value="addition">Addition</option>
-            <option value="subtraction" selected="selected">Subtraction</option>
+            <option value="subtraction">Subtraction</option>
             <option value="multiplication">Multiplication</option>
             <option value="division">Division</option>
         </select>
@@ -33,7 +35,7 @@ const createEquation = equation => `
     <li class="${equation.status}">${equation.name}</li> 
 `;
 
-// Create line of addition equations
+// Create line of equations
 const createEquationLine = (arr, lineNum) => {
     let num = parseInt(`${lineNum}0`);
     let lastNum = num + 10;
@@ -65,6 +67,7 @@ const createGrid = array => {
 
 // Create full grid
 export const renderChartGrid = array => {
+    elements.middle.innerHTML = '';
     const markup = `
         <div class="grid">
             <div class="plain_grid">

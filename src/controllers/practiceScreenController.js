@@ -7,6 +7,8 @@ export const startPractice = (arr, onPracticeFinished) => {
     // Print new equation passing equations info
     var practiceModel = new PracticeModel(0, chooseEquation(arr), '', 0);
 
+    printHeader(practiceModel.equation.operator);
+
     var parameters = {
         practiceModel: practiceModel,
         timerIdHolder: timerIdHolder,
@@ -57,6 +59,18 @@ export const startPractice = (arr, onPracticeFinished) => {
     window.addEventListener('keypress', keyPressHandler);
     practiceView.renderEquation(practiceModel);
     timerIdHolder.id = startTimer(parameters);
+};
+
+var printHeader = operator => {
+    if (operator === '+') {
+        practiceView.printHeader('Addition');
+    } else if (operator === '-') {
+        practiceView.printHeader('Subtraction');
+    } else if (operator === '*') {
+        practiceView.printHeader('Multiplication');
+    } else if (operator === '÷') {
+        practiceView.printHeader('division');
+    } 
 };
 
 var startTimer = (parameters) => {
